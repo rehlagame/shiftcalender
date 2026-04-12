@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقويم الشفتات الذكي</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="login-view" class="view-container">
+    <div class="card login-card">
+        <h2>تسجيل الدخول</h2>
+        <p>الرجاء إدخال بيانات الاعتماد للوصول لجدولك</p>
+        <input type="text" id="username" placeholder="اسم المستخدم">
+        <input type="password" id="password" placeholder="كلمة المرور">
+        <button id="login-btn">دخول</button>
+        <p id="login-error" class="error-text hidden">بيانات الدخول خاطئة!</p>
+    </div>
+</div>
+
+<div id="app-view" class="view-container hidden">
+
+    <header class="app-header">
+        <button id="logout-btn" class="btn-danger">خروج</button>
+        <div class="month-controls">
+            <button id="prev-month">❮</button>
+            <h2 id="month-year-display">يناير 2026</h2>
+            <button id="next-month">❯</button>
+        </div>
+        <button id="settings-toggle-btn">⚙️ الإعدادات</button>
+    </header>
+
+    <div id="settings-panel" class="settings-panel hidden card">
+        <h3>إعدادات الدورة الأساسية</h3>
+        <label for="start-date-input">اختر أول يوم داومت فيه "شفت صبح":</label>
+        <input type="date" id="start-date-input">
+        <button id="save-settings-btn">حفظ الدورة وتحديث التقويم</button>
+    </div>
+
+    <div class="color-legend">
+        <span class="legend-item"><div class="box shift-morning"></div> صبح</span>
+        <span class="legend-item"><div class="box shift-evening"></div> عصر</span>
+        <span class="legend-item"><div class="box shift-night"></div> ليل</span>
+        <span class="legend-item"><div class="box shift-off"></div> راحة</span>
+        <span class="legend-item"><div class="box shift-vacation"></div> إجازة</span>
+    </div>
+
+    <div class="calendar-wrapper card">
+        <div class="weekdays">
+            <div>الأحد</div><div>الإثنين</div><div>الثلاثاء</div><div>الأربعاء</div><div>الخميس</div><div>الجمعة</div><div>السبت</div>
+        </div>
+        <div id="calendar-grid" class="calendar-grid">
+        </div>
+    </div>
+
+</div>
+
+<div id="exception-modal" class="modal hidden">
+    <div class="modal-content card">
+        <h3 id="modal-date-title">تعديل يوم</h3>
+        <p>ماذا تريد أن تفعل في هذا اليوم؟</p>
+        <div class="modal-actions">
+            <button id="mark-vacation-btn" class="btn-success">✅ تسجيل كإجازة</button>
+            <button id="clear-exception-btn" class="btn-danger">🔄 العودة للنمط التلقائي</button>
+            <button id="close-modal-btn">إلغاء</button>
+        </div>
+    </div>
+</div>
+
+<script src="js/database.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/calendar.js"></script>
+</body>
+</html>

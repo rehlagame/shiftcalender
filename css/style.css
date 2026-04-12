@@ -1,0 +1,83 @@
+/* --- المتغيرات الأساسية (السمة والألوان) --- */
+:root {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --border-color: #e0e0e0;
+
+    /* ألوان الشفتات - المجموعة الأولى */
+    --shift-morning: #FFD54F; /* أصفر */
+    --shift-evening: #FF8A65; /* برتقالي */
+    --shift-night: #5C6BC0;   /* أزرق داكن */
+    --shift-off: #E0E0E0;     /* رمادي */
+
+    /* ألوان الاستثناءات والمجموعة الثانية */
+    --shift-vacation: #81C784; /* أخضر للإجازة */
+    --shift-group2: #AED581;   /* أخضر فاتح للمجموعة الثانية */
+}
+
+/* --- الإعدادات العامة --- */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background-color: var(--bg-color); color: var(--text-main); display: flex; justify-content: center; min-height: 100vh; }
+.hidden { display: none !important; }
+
+/* --- الحاويات والبطاقات --- */
+.view-container { width: 100%; max-width: 900px; padding: 20px; }
+.card { background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 20px; }
+
+/* --- شاشة تسجيل الدخول --- */
+.login-card { max-width: 400px; margin: 100px auto; text-align: center; }
+.login-card input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid var(--border-color); border-radius: 8px; font-size: 16px; }
+.login-card button { width: 100%; padding: 12px; background: #2196F3; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; }
+.error-text { color: red; margin-top: 10px; }
+
+/* --- الترويسة والأزرار --- */
+.app-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.month-controls { display: flex; align-items: center; gap: 15px; }
+.month-controls button { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-main); }
+button { cursor: pointer; padding: 8px 16px; border-radius: 6px; border: none; font-weight: bold; transition: 0.2s; }
+.btn-danger { background: #e53935; color: white; }
+.btn-success { background: #43A047; color: white; }
+
+/* --- لوحة الإعدادات --- */
+.settings-panel { margin-bottom: 20px; background: #fffde7; border: 1px solid #fff59d; }
+.settings-panel input, .settings-panel button { margin-top: 10px; padding: 8px; font-size: 16px; }
+
+/* --- مفتاح الألوان --- */
+.color-legend { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 5px; font-size: 14px; font-weight: bold; }
+.legend-item .box { width: 15px; height: 15px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.1); }
+
+/* --- شبكة التقويم --- */
+.weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; margin-bottom: 10px; color: var(--text-muted); }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+
+/* تصميم مربع اليوم */
+.day-cell { min-height: 80px; padding: 5px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; cursor: pointer; transition: transform 0.1s; }
+.day-cell:hover { transform: scale(1.02); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.day-number { font-weight: bold; margin-bottom: auto; }
+.shift-name { font-size: 12px; font-weight: bold; text-align: center; padding: 2px; border-radius: 4px; background: rgba(255,255,255,0.5); }
+.empty-cell { background: transparent; border: none; cursor: default; }
+.empty-cell:hover { transform: none; box-shadow: none; }
+
+/* ألوان الخلايا بناءً على الشفت */
+.shift-morning { background-color: var(--shift-morning); color: #333; }
+.shift-evening { background-color: var(--shift-evening); color: #333; }
+.shift-night { background-color: var(--shift-night); color: white; }
+.shift-off { background-color: var(--shift-off); color: #333; }
+.shift-vacation { background-color: var(--shift-vacation); color: white; border: 2px dashed #2E7D32; }
+.shift-group2 { background-color: var(--shift-group2); color: #333; } /* لون المجموعة الثانية */
+
+/* --- النافذة المنبثقة (Modal) --- */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center; z-index: 1000; }
+.modal-content { max-width: 350px; text-align: center; }
+.modal-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.modal-actions button { padding: 12px; }
+
+/* --- تجاوب الشاشات الصغيرة (الموبايل) --- */
+@media (max-width: 600px) {
+    .day-cell { min-height: 60px; }
+    .shift-name { font-size: 10px; }
+    .app-header { flex-direction: column; gap: 15px; }
+}
