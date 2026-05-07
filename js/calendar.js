@@ -58,6 +58,9 @@ async function renderCalendar(month, year) {
         startDateObj = new Date(p[0], p[1] - 1, p[2]); // السنة، الشهر (0-11)، اليوم
     }
 
+    // إضافة هذا السطر لجلب التاريخ الفعلي لليوم
+    const realToday = new Date();
+
     // 1. إضافة المربعات الفارغة
     for (let i = 0; i < firstDay; i++) {
         const emptyCell = document.createElement('div');
@@ -75,6 +78,11 @@ async function renderCalendar(month, year) {
         cell.innerHTML = `<div class="day-number">${day}</div>`;
 
         cell.addEventListener('click', () => openModal(dateStr, monthNames[month], day, year));
+
+        // --- التعديل هنا: التحقق مما إذا كان هذا المربع هو "اليوم الحالي" ---
+        if (year === realToday.getFullYear() && month === realToday.getMonth() && day === realToday.getDate()) {
+            cell.classList.add('today-cell');
+        }
 
         if (exceptions[dateStr] === 'vacation') {
             cell.classList.add('shift-vacation');
