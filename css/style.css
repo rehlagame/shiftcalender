@@ -81,3 +81,40 @@ button { cursor: pointer; padding: 8px 16px; border-radius: 6px; border: none; f
     .shift-name { font-size: 10px; }
     .app-header { flex-direction: column; gap: 15px; }
 }
+/* --- تمييز اليوم الحالي (Today) --- */
+.today-cell {
+    border: 2px solid #2196F3 !important; /* إطار أزرق بارز */
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.2);
+    position: relative;
+    background-color: rgba(33, 150, 243, 0.05); /* خلفية خفيفة جداً */
+}
+
+/* تحويل رقم اليوم الحالي إلى دائرة */
+.today-cell .day-number {
+    background-color: #2196F3;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 5px auto; /* توسيط الدائرة */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* علامة (Badge) إضافية في الزاوية العلوية */
+.today-cell::after {
+    content: "اليوم";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #e53935;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+    z-index: 2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
