@@ -81,18 +81,20 @@ button { cursor: pointer; padding: 8px 16px; border-radius: 6px; border: none; f
     .shift-name { font-size: 10px; }
     .app-header { flex-direction: column; gap: 15px; }
 }
+
 /* --- تمييز اليوم الحالي (Today) --- */
 .today-cell {
     border: 2px solid #2196F3 !important; /* إطار أزرق بارز */
-    box-shadow: 0 0 10px rgba(33, 150, 243, 0.2);
+    box-shadow: 0 0 12px rgba(33, 150, 243, 0.5) !important; /* توهج أزرق يبرز المربع */
     position: relative;
-    background-color: rgba(33, 150, 243, 0.05); /* خلفية خفيفة جداً */
+    /* تم إزالة الخلفية حتى يظل لون الشفت (صبح، عصر، ليل) مرئياً بوضوح */
+    z-index: 2; /* لضمان ظهور الإطار فوق المربعات الأخرى */
 }
 
 /* تحويل رقم اليوم الحالي إلى دائرة */
 .today-cell .day-number {
     background-color: #2196F3;
-    color: white;
+    color: white !important; /* لضمان اللون الأبيض دائماً داخل الدائرة */
     width: 26px;
     height: 26px;
     border-radius: 50%;
@@ -107,14 +109,13 @@ button { cursor: pointer; padding: 8px 16px; border-radius: 6px; border: none; f
 .today-cell::after {
     content: "اليوم";
     position: absolute;
-    top: -10px;
-    right: -10px;
+    top: -8px;
+    right: -5px; /* تم تقليل البروز حتى لا يغطي على المربع المجاور */
     background: #e53935;
     color: white;
     font-size: 10px;
     padding: 2px 6px;
     border-radius: 10px;
     font-weight: bold;
-    z-index: 2;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
